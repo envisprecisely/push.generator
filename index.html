@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/Three.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/canvas2image.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/push-application.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	$( 'window' ).ready( function() {
+		var generator = new window.PushGenerator( '#generator', '#gen-input', 800, 600, true )
+		$( '#gen-input' ).focus()
+		
+		if ( window.getURLVars()['push'] && window.getURLVars()['push'] != '' ) {
+			setTimeout( function() {
+				var text = decodeURIComponent( window.getURLVars()['push'] )
+				text = text.split( '_' ).join( ' ' )
+				$( '#gen-input' ).val( text ).trigger( 'keyup' )
+			}, 0 );
+		}
+	})
+		
+	</script>
+	
+	<style type="text/css" media="screen">
+		body {
+			background-color: #262626;
+		}
+		#generator-frame {
+			width: 800px;
+			text-align: center;
+		}
+		#generator {
+			width: 800px;
+			height: 600px;
+			background-color: #262626;
+		/*	background-image: -webkit-radial-gradient( #666, #262626 ); */
+		}
+		#gen-input {
+			font-size:40px;
+			background:none;
+			border:none;
+			border-bottom:1px solid #ccc;
+			color:#fff;
+			outline:none;
+			margin: 20px auto 0 auto;
+			padding: 10px 20px;
+			-webkit-transition: background-color .2s ease;
+		}
+		
+		#generator-frame canvas, #generator-frame img {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		
+		#generator-frame img {
+			opacity: .3;
+		}
+		
+		.img-back {
+			-webkit-animation: ROTATE-RIGHT 800s infinite linear;
+			-moz-animation: ROTATE-RIGHT 800s infinite linear;
+			-ms-animation: ROTATE-RIGHT 800s infinite linear;
+			-o-animation: ROTATE-RIGHT 800s infinite linear;
+		}
+		
+		.img-front {
+			-webkit-animation: ROTATE-LEFT 500s infinite linear;
+			-moz-animation: ROTATE-LEFT 500s infinite linear;
+			-ms-animation: ROTATE-LEFT 500s infinite linear;
+			-o-animation: ROTATE-LEFT 500s infinite linear;
+			opacity: .1;
+		}
+		
+		@-webkit-keyframes ROTATE-RIGHT {
+			0%		{ -webkit-transform: rotate( 0deg   ) scale( 1.1 ) }
+			100%	{ -webkit-transform: rotate( 360deg ) scale( 1.1 ) }
+		}
+		
+		@-webkit-keyframes ROTATE-LEFT {
+			0%		{ -webkit-transform: rotate( 0deg 	 ) scale( 1.2 ) }
+			100%	{ -webkit-transform: rotate( -360deg ) scale( 1.2 ) }
+		}
+		
+		@-moz-keyframes ROTATE-RIGHT {
+			0%		{ -moz-transform: rotate( 0deg   ) scale( 1.1 ) }
+			100%	{ -moz-transform: rotate( 360deg ) scale( 1.1 ) }
+		}
+		
+		@-moz-keyframes ROTATE-LEFT {
+			0%		{ -moz-transform: rotate( 0deg 	 ) scale( 1.2 ) }
+			100%	{ -moz-transform: rotate( -360deg ) scale( 1.2 ) }
+		}
+		
+		@-ms-keyframes ROTATE-RIGHT {
+			0%		{ -ms-transform: rotate( 0deg   ) scale( 1.1 ) }
+			100%	{ -ms-transform: rotate( 360deg ) scale( 1.1 ) }
+		}
+		
+		@-ms-keyframes ROTATE-LEFT {
+			0%		{ -ms-transform: rotate( 0deg 	 ) scale( 1.2 ) }
+			100%	{ -ms-transform: rotate( -360deg ) scale( 1.2 ) }
+		}
+		
+		@-o-keyframes ROTATE-RIGHT {
+			0%		{ -o-transform: rotate( 0deg   ) scale( 1.1 ) }
+			100%	{ -o-transform: rotate( 360deg ) scale( 1.1 ) }
+		}
+		
+		@-o-keyframes ROTATE-LEFT {
+			0%		{ -o-transform: rotate( 0deg 	 ) scale( 1.2 ) }
+			100%	{ -o-transform: rotate( -360deg ) scale( 1.2 ) }
+		}
+		
+	</style>
+	
+	
+	<meta class="canonical" property="canonical" content="http://push-conference.com"/>
+	<meta property="og:image" content="img/fb-placeholder.jpg">
+	<meta property="og:title" content="I created something with the push.generator!">
+	
+	<title>push.generator</title>
+	
+</head>
+
+<body>
+	<div id="generator-frame">
+		<div id="generator">
+			<img class="img-back"  src="img/push-bg-back.png" >
+			<img class="img-front" src="img/push-bg-front.png">
+		</div>
+		<input type="text" id="gen-input" placeholder="type here">
+	</div>
+	<button id="gen-share">Render to image</button>
+</body>
+
+</html>
