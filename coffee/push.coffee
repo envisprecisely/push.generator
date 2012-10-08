@@ -148,7 +148,8 @@ class window.PushGenerator
 		
 		# image exporting
 		$( 'button#gen-share' ).on 'click', ( event ) =>
-			img = Canvas2Image.saveAsPNG $( 'canvas' )[0], 800, 600
+			elem = $( 'canvas' )[0]
+			img = Canvas2Image.saveAsPNG elem, elem.width, elem.height
 
 	animate: =>
 		unless @clicked or not @autorotate
