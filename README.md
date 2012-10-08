@@ -1,7 +1,7 @@
 # push.generator
 A dynamic 3D avatar generator
 
-![push.generator](Screenshot.png)
+![push.generator](https://raw.github.com/envisprecisely/push.generator/master/Screenshot.png)
 
 ## What is this?
 Written for the generative corporate design of [push.conference](http://push-conference.com), the generator will create graphics out of letters you type.
